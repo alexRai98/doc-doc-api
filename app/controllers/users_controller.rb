@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
+    @user = User.where('name LIKE ?', "%#{params[:name]}%")
     if @user
       render json: @user
     else
